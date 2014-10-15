@@ -1,0 +1,63 @@
+html {
+    box-sizing: border-box;
+    font-size: 10px;
+}
+*, *:before, *:after { box-sizing: inherit; }
+
+@for $i from 64 through 512 {
+    @media (min-width: 0px + $i * 5px) {
+        body { font-size: logarithm($i) * logarithm($i / 0.1) * 0.023em; }
+        @if $i < 150 { $i: 150 }
+        @if $i > 400 { $i: 400 }
+        section, footer { padding: $i * 0.03em $i * 0.02em; }
+        .padding-responsive { padding: $i * 0.03em $i * 0.02em; }
+        .padding-top-responsive { padding-top: $i * 0.03em; }
+        .padding-bottom-responsive { padding-bottom: $i * 0.03em; }
+    }
+}
+
+$column-margin: 2%;
+.column-half, .column-third, .column-two-thirds {
+    &.left, &.left-spaced { float: left; }
+    &.right, &.right-spaced { float: right; }
+    img { max-width: 100%; }
+    @media (max-width: 1000px) {
+        width: 100% !important;
+        margin-right: 0 !important;
+        margin-left: 0 !important;
+    }
+}
+.column-half {
+    width: 50%;
+    &.left-spaced {
+        margin-right: $column-margin;
+        width: 50% - $column-margin;
+    }
+    &.right-spaced {
+        margin-left: $column-margin;
+        width: 50% - $column-margin;
+    }
+}
+.column-third {
+    width: 33.333333333333%;
+    &.left-spaced {
+        margin-right: $column-margin;
+        width: 33.333333333333% - $column-margin;
+    }
+    &.right-spaced {
+        margin-left: $column-margin;
+        width: 33.333333333333% - $column-margin;
+    }
+    &:nth-of-type(3n) { margin-right: 0; }
+}
+.column-two-thirds {
+    width: 66.6666666666%;
+    &.left-spaced {
+        margin-right: $column-margin;
+        width: 66.6666666666% - $column-margin;
+    }
+    &.right-spaced {
+        margin-left: $column-margin;
+        width: 66.6666666666% - $column-margin;
+    }
+}
