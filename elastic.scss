@@ -1,9 +1,22 @@
+// name: Rubber
+// license: MIT-style license.
+// copyright: Copyright (c) 2014 [Tobias Wallin](http://tobiaswallin.com).
+// authors: Tobias Wallin - http://tobiaswallin.com
+
+// Customization
+$column-margin: 2%;
+
+// Required CSS settings
 html {
     box-sizing: border-box;
     font-size: 10px;
+    img { -ms-interpolation-mode: bicubic; }
 }
 *, *:before, *:after { box-sizing: inherit; }
 
+// Generates media queries which change the definition of 1em depending on window size.
+// A logarithm is used to hinder 1em to be either too large or too small.
+// Paddings increase/decrease more than font-size as lots of space is nice on larger screens.
 @for $i from 64 through 512 {
     @media (min-width: 0px + $i * 5px) {
         body { font-size: logarithm($i) * logarithm($i / 0.1) * 0.023em; }
@@ -16,7 +29,9 @@ html {
     }
 }
 
-$column-margin: 2%;
+// Replacement for traditional grid systems
+// Divide a space in 2 or 3 parts and float them left or right
+// Use left-spaced, right-spaced to add space between columns
 .column-half, .column-third, .column-two-thirds {
     &.left, &.left-spaced { float: left; }
     &.right, &.right-spaced { float: right; }
