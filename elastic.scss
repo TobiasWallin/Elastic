@@ -1,10 +1,5 @@
-// name: Rubber
-// license: MIT-style license.
-// copyright: Copyright (c) 2014 [Tobias Wallin](http://tobiaswallin.com).
-// authors: Tobias Wallin - http://tobiaswallin.com
-
-// Customization
-$column-margin: 2%;
+@import '_configuration.scss';
+@import '_grid.scss';
 
 // Required CSS settings
 html {
@@ -22,57 +17,6 @@ html {
         body { font-size: logarithm($i) * logarithm($i / 0.1) * 0.023em; }
         @if $i < 150 { $i: 150 }
         @if $i > 400 { $i: 400 }
-        section, footer { padding: $i * 0.03em $i * 0.02em; }
-        .padding-responsive { padding: $i * 0.03em $i * 0.02em; }
-        .padding-top-responsive { padding-top: $i * 0.03em; }
-        .padding-bottom-responsive { padding-bottom: $i * 0.03em; }
-    }
-}
-
-// Replacement for traditional grid systems
-// Divide a space in 2 or 3 parts and float them left or right
-// Use left-spaced, right-spaced to add space between columns
-.column-half, .column-third, .column-two-thirds {
-    &.left, &.left-spaced { float: left; }
-    &.right, &.right-spaced { float: right; }
-    img { max-width: 100%; }
-    @media (max-width: 1000px) {
-        width: 100% !important;
-        margin-right: 0 !important;
-        margin-left: 0 !important;
-    }
-}
-.column-half {
-    width: 50%;
-    &.left-spaced {
-        margin-right: $column-margin;
-        width: 50% - $column-margin;
-    }
-    &.right-spaced {
-        margin-left: $column-margin;
-        width: 50% - $column-margin;
-    }
-}
-.column-third {
-    width: 33.333333333333%;
-    &.left-spaced {
-        margin-right: $column-margin;
-        width: 33.333333333333% - $column-margin;
-    }
-    &.right-spaced {
-        margin-left: $column-margin;
-        width: 33.333333333333% - $column-margin;
-    }
-    &:nth-of-type(3n) { margin-right: 0; }
-}
-.column-two-thirds {
-    width: 66.6666666666%;
-    &.left-spaced {
-        margin-right: $column-margin;
-        width: 66.6666666666% - $column-margin;
-    }
-    &.right-spaced {
-        margin-left: $column-margin;
-        width: 66.6666666666% - $column-margin;
+        @include loop-injection($i)
     }
 }

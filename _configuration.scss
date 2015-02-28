@@ -1,0 +1,15 @@
+// Customization
+$column-margin: 2%;
+$padding-vertical: 0.03em;
+$padding-horizontal: 0.02em;
+
+// Injected in the loop generation media queries.
+// $n is loop counter, the higher it is, the wider the browser window is.
+// Use it to create your own calculations based on the size of the browser window.
+// Each line injected here significantly increases the compiled CSS file size.
+@mixin loop-injection($n) {
+    section, footer { padding: $n * $padding-vertical $n * $padding-horizontal; }
+    .padding-responsive { padding: $n * $padding-vertical $n * $padding-horizontal; }
+    .padding-top-responsive { padding-top: $n * $padding-vertical; }
+    .padding-bottom-responsive { padding-bottom: $n * $padding-vertical; }
+}
