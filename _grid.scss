@@ -1,7 +1,7 @@
 // Replacement for traditional grid systems
 // Divide a space in 2, 3 or 4 parts and float them left or right
 // Use left-spaced, right-spaced to add space between columns
-.column-half, .column-third, .column-two-thirds, .column-fourth, .column-two-fourths {
+.column-half, .column-third, .column-two-thirds, .column-fourth, .column-three-fourths {
     &.left, &.left-spaced { float: left; }
     &.right, &.right-spaced { float: right; }
     img { max-width: 100%; }
